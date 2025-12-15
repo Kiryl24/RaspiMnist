@@ -46,7 +46,7 @@ class ExplainWindow(tk.Toplevel):
         self.layers = []
         self.current_layer_index = 0
         self.last_toast_time = 0
-        self.TOAST_COOLDOWN = 5.0  # sekundy
+        self.TOAST_COOLDOWN = 5.0 
 
         self.generate_layers(image_pil)
 
@@ -113,7 +113,7 @@ class ExplainWindow(tk.Toplevel):
         self.lbl_indicator.config(text=f"{self.current_layer_index + 1} / {len(self.layers)}")
 
         img = data['image']
-        img = img.resize((260, 260), Image.NEAREST)  # Skalowanie jak w Androidzie
+        img = img.resize((260, 260), Image.NEAREST)
         self.photo_img = ImageTk.PhotoImage(img)
         self.canvas_visual.create_image(130, 130, image=self.photo_img)
 
@@ -234,7 +234,6 @@ class MnistFrame(tk.Frame):
             confidence = np.max(output) * 100
             self.lbl_result.config(text=f"Cyfra: {prediction} ({confidence:.1f}%)")
         except Exception as e:
-            # Fallback dla mocka
             mock_res = np.random.randint(0, 9)
             self.lbl_result.config(text=f"Cyfra (Mock): {mock_res}")
 
